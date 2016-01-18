@@ -1,0 +1,32 @@
+{
+  "name": "crudable",
+  "version": "1.0.0",
+  "description": "A jQuery plugin for generating editable, deletable, creatable html element",
+  "main": "dist/crudable.js",
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "babel src/crudable.js -o dist/crudable.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schwannden/crudable.git"
+  },
+  "keywords": [
+    "crud"
+  ],
+  "author": "schwannden",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schwannden/crudable/issues"
+  },
+  "homepage": "https://github.com/schwannden/crudable#readme",
+  "devDependencies": {
+    "babel": "^6.3.26",
+    "babel-cli": "^6.4.0",
+    "babel-preset-es2015": "^6.3.13"
+  },
+  "dependencies": {
+    "jquery": "^2.2.0"
+  }
+}

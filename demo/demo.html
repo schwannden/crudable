@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"> <![endif]-->
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="../crudable.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h1> Basic usage </h1>
+      <h3> Demonstration </h3>
+      <table class="table table-striped">
+        <tr class="crudable">
+          <td>
+            <div class="input-group">
+              <label class="input-group-addon"> What's include? </label>
+              <input class="form-control include_text" placeholder="included item" value="Free drink!" name="include" type="text" >
+            </div>
+          </td>
+          <td>
+            <select name="highlight">
+              <option value="0"> no highlight </option>
+              <option value="1"> highlight </option>
+            </select>
+          </td>
+          <td> <div class="crudable-create btn btn-info">   + </div> </td>
+          <td> <div class="crudable-delete btn btn-danger"> - </div> </td>
+        </tr>
+      </table>
+      <h3> HTML </h3>
+      <pre class="prettyprint">
+        &lt;table class="table table-striped"&gt;
+          &lt;tbody&gt;
+            &lt;tr class="crudable"&gt;
+              &lt;td&gt;
+                &lt;div class="input-group"&gt;
+                  &lt;label class="input-group-addon"&gt; What's include? &lt;/label&gt;
+                  &lt;input class="form-control include_text" placeholder="included item" value="Free drink!" name="include" type="text"&gt;
+                &lt;/div&gt;
+              &lt;/td&gt;
+              &lt;td&gt;
+                &lt;select name="highlight"&gt;
+                  &lt;option value="0"&gt; no highlight &lt;/option&gt;
+                  &lt;option value="1"&gt; highlight &lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/td&gt;
+              &lt;td&gt; &lt;div class="crudable-create btn btn-info"&gt;   + &lt;/div&gt; &lt;/td&gt;
+              &lt;td&gt; &lt;div class="crudable-delete btn btn-danger"&gt; - &lt;/div&gt; &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      </pre>
+      <h3> Javascript </h3>
+      <pre>
+        $('.crudable').crudable();
+      </pre>
+    </div> <!-- end row -->
+    <div class="row">
+      <h1> With after create callback </h1>
+      <h3> Demonstration </h3>
+      <table class="table table-striped">
+        <tr class="crudable-daterange">
+          <td class="col-md-7">
+            <div class="input-daterange">
+              <span class="add-on" style="vertical-align: top; height:30px"> From </span>
+              <input type="text" style="vertical-align: top; height:30px" name="start" value="2015-12/08">
+              <span class="add-on" style="vertical-align: top;height:30px"> To </span>
+              <input type="text" style="vertical-align: top;height:30px" name="end" value="2015-12/31">
+            </div>
+          </td>
+          <td class="col-md-4">
+            <div class="input-group">
+              <label class="input-group-addon"> Price </label>
+              <input type="text" class="form-control" name="price" value="78" placeholder="leave this empty for a default value">
+            </div>
+          </td>
+          <td> <div class="crudable-create btn btn-info">   + </div> </td>
+          <td> <div class="crudable-delete btn btn-danger"> - </div> </td>
+        </tr>
+      </table>
+      <h3> HTML </h3>
+      <pre class="prettyprint">
+    &lt;tbody&gt;
+      &lt;tr class="crudable-daterange"&gt;
+        &lt;td class="col-md-7"&gt;
+          &lt;div class="input-daterange"&gt;
+            &lt;span class="add-on" style="vertical-align: top; height:30px"&gt; From &lt;/span&gt;
+            &lt;input type="text" style="vertical-align: top; height:30px" name="start" value="2015-12/08"&gt;
+            &lt;span class="add-on" style="vertical-align: top;height:30px"&gt; To &lt;/span&gt;
+            &lt;input type="text" style="vertical-align: top;height:30px" name="end" value="2015-12/31"&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+        &lt;td class="col-md-4"&gt;
+          &lt;div class="input-group"&gt;
+            &lt;label class="input-group-addon"&gt; Price &lt;/label&gt;
+            &lt;input type="text" class="form-control" name="price" value="78" placeholder="leave this empty for a default value"&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+        &lt;td&gt; &lt;div class="crudable-create btn btn-info"&gt;   + &lt;/div&gt; &lt;/td&gt;
+        &lt;td&gt; &lt;div class="crudable-delete btn btn-danger"&gt; - &lt;/div&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+      </pre>
+      <h3> Javascript </h3>
+      <pre>
+  $('.crudable-daterange').crudable({
+    crudableLabel: "crudable-daterange",
+    afterCreate:   function(element) {
+      element.find('.input-daterange').datepicker();
+    }
+  });
+      </pre>
+    </div> <!-- end row -->
+
+    <div class="row">
+      <h1> nested crudable </h1>
+      <h3> Demonstration </h3>
+      <div class="table-day">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                <div class="input-group">
+                  <label for="date" class="input-group-addon"> Date </label>
+                  <input class="form-control" value="A tour near city" name="date" type="text">
+                </div>
+              </th>
+              <th>
+                <a class="create-day btn btn-default">Add a new day </a>
+                <a class="delete-day btn btn-danger">Delete this day</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="crudable">
+              <td>
+                <div class="input-group">
+                  <label class="input-group-addon"> Plan </label>
+                  <input class="form-control" value="" name="plan" type="text">
+                </div>
+              </td>
+              <td>
+                <div class="input-group">
+                  <label class="input-group-addon"> Time </label>
+                  <input class="form-control" value="" name="time" type="text">
+                </div>
+              </td>
+              <td >
+                <div class="crudable-create btn btn-info"   >+</div>
+              </td>
+              <td >
+                <div class="crudable-delete btn btn-danger" >-</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> <!-- end table-day -->
+      <pre class="prettyprint">
+    &lt;div class="table-day"&gt;
+      &lt;table class="table table-striped"&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;
+              &lt;div class="input-group"&gt;
+                &lt;label for="date" class="input-group-addon"&gt; Date &lt;/label&gt;
+                &lt;input class="form-control" value="A tour near city" name="date" type="text"&gt;
+              &lt;/div&gt;
+            &lt;/th&gt;
+            &lt;th&gt;
+              &lt;a class="create-day btn btn-default"&gt;Add a new day &lt;/a&gt;
+              &lt;a class="delete-day btn btn-danger"&gt;Delete this day&lt;/a&gt;
+            &lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr class="crudable"&gt;
+            &lt;td&gt;
+              &lt;div class="input-group"&gt;
+                &lt;label class="input-group-addon"&gt; Plan &lt;/label&gt;
+                &lt;input class="form-control" value="" name="plan" type="text"&gt;
+              &lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+              &lt;div class="input-group"&gt;
+                &lt;label class="input-group-addon"&gt; Time &lt;/label&gt;
+                &lt;input class="form-control" value="" name="time" type="text"&gt;
+              &lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+              &lt;div class="crudable-create btn btn-info"&gt;+&lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+              &lt;div class="crudable-delete btn btn-danger"&gt;-&lt;/div&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+      </pre>
+      <h3> Javascript </h3>
+      <pre>
+        $('.table-day').crudable({
+          crudableLabel: "table-day",
+          createLabel:   "create-day",
+          deleteLabel:   "delete-day",
+          afterCreate:   function(element) {
+            element.find('.crudable').crudable();
+          },
+        });
+      </pre>
+    </div> <!-- end row -->
+
+  </div> <!-- end container -->
+
+<script>
+  $('.crudable').crudable();
+  $('.crudable-daterange').crudable({
+    crudableLabel: "crudable-daterange",
+    afterCreate:   function(element) {
+      element.find('.input-daterange').datepicker();
+    }
+  });
+  $('.table-day').crudable({
+    crudableLabel: "table-day",
+    createLabel:   "create-day",
+    deleteLabel:   "delete-day",
+    afterCreate:   function(element) {
+      element.find('.crudable').crudable();
+    },
+  });
+  $('.input-daterange').datepicker();
+
+</script>
+
+</body>
+
+</html>
